@@ -2,7 +2,6 @@
 
 namespace CRUD\Controller;
 
-use CRUD\Helper\PersonHelper;
 use CRUD\Helper\TaskHelper;
 use CRUD\Model\Actions;
 use CRUD\Model\Task;
@@ -98,18 +97,4 @@ class Controller
         $taskHelper->delete($request['id']);
     }
 
-    public function loginAction($request)
-    {
-        $personHelper = new PersonHelper();
-
-        $result = $personHelper->fetchPerson($request['username'], $request['password']);
-        if ($result == false) {
-            $isAvailable = "No Admin";
-        } else {
-            $isAvailable = "Admin";
-        }
-        echo json_encode($isAvailable);
-        $toJSON = json_encode($isAvailable);
-        return $toJSON;
-    }
 }
